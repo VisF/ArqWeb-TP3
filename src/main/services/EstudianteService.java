@@ -61,4 +61,26 @@ public class EstudianteService {
 		return repository.getEstudiantesDeCarreraPorCiudad(ciudad,carrera);
 	}
 
+	public Estudiante update(Integer id, Estudiante estudianteActualizado) {
+        // Buscar el estudiante existente por ID
+        Optional<Estudiante> optionalEstudiante = repository.findById(id);
+
+        if (optionalEstudiante.isPresent()) {
+            Estudiante estudianteExistente = optionalEstudiante.get();
+
+            // Actualizar los campos con los nuevos valores
+            estudianteExistente.setNombre(estudianteActualizado.getNombre());
+            estudianteExistente.setApellido(estudianteActualizado.getApellido());
+            estudianteExistente.setFechaNac(estudianteActualizado.fechaNac());
+            estudianteExistente.setGenero(estudianteActualizado.getGenero());
+            estudianteExistente.setDni(estudianteActualizado.getDni());
+            estudianteExistente.setCiudadDeResidencia(estudianteActualizado.getCiudadDeResidencia());
+
+            // Guardar el estudiante actualizado
+            return repository.save(estudianteExistente);
+        } else {
+            throw new IllegalArgumentException("Estudiante con id " + id + " no encontrado.");
+        }
+    }
+
 }
