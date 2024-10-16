@@ -36,4 +36,7 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 	        "GROUP BY c.nombre, YEAR(ec.fechaInicio) " +
 	        "ORDER BY c.nombre ASC, YEAR(ec.fechaInicio) ASC")
 	Iterable<CarreraReporteDTO> reporteCarreras();
+	
+	@Query("SELECT new main.dto.CarreraDTO(c.nombre) FROM Carrera c WHERE c.id=:id")
+    Optional<Carrera> findById(Integer id);
 }

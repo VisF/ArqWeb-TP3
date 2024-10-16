@@ -2,6 +2,8 @@ package main.modelo;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,10 +19,12 @@ public class EstudianteCarrera {
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "idestudiante", nullable = false)
+	@JsonBackReference
 	private Estudiante estudiante;
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "idcarrera", nullable = false)
+	@JsonBackReference
 	private Carrera carrera;
 	@Column
 	private LocalDate fechaInicio;

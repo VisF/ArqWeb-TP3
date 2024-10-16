@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,6 +59,11 @@ public class CarreraController {
 	@GetMapping("/reporte")
 	public Iterable<CarreraReporteDTO> reporteCarreras(){
 		return service.reporteCarreras();
+	}
+	
+	@DeleteMapping("/{id}")
+	public void DeleteById(@PathVariable Integer id) {
+		service.delete(id);
 	}
 }
 
