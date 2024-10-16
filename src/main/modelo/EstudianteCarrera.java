@@ -40,6 +40,12 @@ public class EstudianteCarrera {
 		this.estudiante = estudiante;
 		this.carrera = carrera;
 		this.fechaInicio = fechainicio;
+		this.fechaFin = null;
+	}
+	
+	public EstudianteCarrera(Estudiante estudiante, Carrera carrera, LocalDate fechainicio, LocalDate fechaFin) {
+		this(estudiante,carrera,fechainicio);
+		this.fechaFin=fechaFin;
 	}
 
 	public Estudiante getEstudiante() {
