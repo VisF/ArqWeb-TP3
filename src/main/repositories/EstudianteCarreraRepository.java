@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import main.dto.EstudianteCarreraPostDTO;
+import main.modelo.Carrera;
+import main.modelo.Estudiante;
 import main.modelo.EstudianteCarrera;
 import main.modelo.EstudianteCarreraId;
 
@@ -16,7 +18,7 @@ public interface EstudianteCarreraRepository extends JpaRepository<EstudianteCar
 	
 	@Query("INSERT INTO EstudianteCarrera (estudianteId, carreraId, fechaInicio,fechaFin) "
 			+ "VALUES (:estudianteId, :carreraId, :fechaInicio, :fechaFin)")
-	EstudianteCarrera saveEC(Integer estudianteId, Integer carreraId, LocalDate fechaInicio, LocalDate fechaFin);
+	EstudianteCarrera saveEC(Estudiante estudiante, Carrera carrera, LocalDate fechaInicio, LocalDate fechaFin);
 
 
 }
