@@ -28,6 +28,10 @@ public class EstudianteService {
 	}
 	
 	public Estudiante save(Estudiante estudiante) {
+		Optional<Integer> maxLibreta = repository.findMaxNroLibreta();
+		int nuevoNroLibreta = maxLibreta.orElse(0) + 1;
+		
+		estudiante.setNroLibreta(nuevoNroLibreta);
 		repository.save(estudiante);
 		return estudiante;
 	}

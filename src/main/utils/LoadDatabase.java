@@ -13,6 +13,7 @@ import main.repositories.EstudianteCarreraRepository;
 
 import main.modelo.Estudiante;
 import main.repositories.EstudianteRepository;
+import main.services.EstudianteService;
 
 
 
@@ -21,7 +22,8 @@ import main.repositories.EstudianteRepository;
 class LoadDatabase {
 
 	    @Bean
-	    CommandLineRunner initDatabase(EstudianteRepository estudianteRepository, CarreraRepository carreraRepo, EstudianteCarreraRepository estCarreraRepo) {
+	    CommandLineRunner initDatabase(EstudianteRepository estudianteRepository, CarreraRepository carreraRepo, EstudianteCarreraRepository estCarreraRepo,
+	    		EstudianteService estudianteService) {
 	        return args -> {
 	        	
 	        	 /*var student1 = new Estudiante("Student1", "ApStudent1", LocalDate.now() , 'M' , 123458, "Tres Arroyos");
@@ -57,20 +59,20 @@ class LoadDatabase {
 		            }
 		            */
 		            try {
-		            	Estudiante es = new Estudiante("Paula" , "Sabatini", LocalDate.now() , 'F', 2345, "Chacabuco", 1);
-		        		Estudiante es2 = new Estudiante("Laura" , "Martinez", LocalDate.now() , 'F', 2345, "Zamora", 2);
-		        		Estudiante es3 = new Estudiante("Anastacia" , "Lopez", LocalDate.now() , 'F', 2345, "Loberia",  3);
-		        		Estudiante es4 = new Estudiante("Juan" , "Lopez", LocalDate.now() , 'M', 2345, "Loberia",  4);
-		        		Estudiante es5 = new Estudiante("Pedro" , "Lopez", LocalDate.now() , 'M', 2345, "Loberia",  5);
-		        		Estudiante es6 = new Estudiante("Laura" , "Garcia", LocalDate.now() , 'F', 2345, "Zamora",  6);
+		            	Estudiante es = new Estudiante("Paula" , "Sabatini", LocalDate.now() , 'F', 2345, "Chacabuco");
+		        		Estudiante es2 = new Estudiante("Laura" , "Martinez", LocalDate.now() , 'F', 2345, "Zamora");
+		        		Estudiante es3 = new Estudiante("Anastacia" , "Lopez", LocalDate.now() , 'F', 2345, "Loberia");
+		        		Estudiante es4 = new Estudiante("Juan" , "Lopez", LocalDate.now() , 'M', 2345, "Loberia");
+		        		Estudiante es5 = new Estudiante("Pedro" , "Lopez", LocalDate.now() , 'M', 2345, "Loberia");
+		        		Estudiante es6 = new Estudiante("Laura" , "Garcia", LocalDate.now() , 'F', 2345, "Zamora");
 		        		
 		        		
-		        		estudianteRepository.save(es);
-		        		estudianteRepository.save(es2);
-		        		estudianteRepository.save(es3);
-		        		estudianteRepository.save(es4);
-		        		estudianteRepository.save(es5);
-		        		estudianteRepository.save(es6);
+		        		estudianteService.save(es);
+		        		estudianteService.save(es2);
+		        		estudianteService.save(es3);
+		        		estudianteService.save(es4);
+		        		estudianteService.save(es5);
+		        		estudianteService.save(es6);
 		        		
 		        		
 		        		/*CARRERAS*/

@@ -31,4 +31,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Integer>
 			+ "WHERE c.nombre = ?2 "
 			+ " AND e.ciudadDeResidencia = ?1 ")
 	Iterable<EstudianteDTO> getEstudiantesDeCarreraPorCiudad(String ciudad, String carrera);
+	
+	@Query("SELECT MAX(e.nroLibreta) FROM Estudiante e")
+	Optional<Integer> findMaxNroLibreta();
 }

@@ -31,7 +31,7 @@ public class Estudiante {
 	private int dni;
 	@Column
 	private String ciudadDeResidencia;
-	@Column (nullable = true, unique = true)
+	@Column(nullable = false, unique = true)
 	private int nroLibreta;
 	@OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
 	private List<EstudianteCarrera> carreras;
