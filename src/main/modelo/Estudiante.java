@@ -127,6 +127,11 @@ public class Estudiante {
 	}
 	
 	public int getEdad() {
+		if (fechaNac == null) {
+	        // Si la fecha de nacimiento es nula, no se puede calcular la edad
+	        //throw new IllegalStateException("La fecha de nacimiento es nula");
+			return 0;
+	    }
 		LocalDate fecha = fechaNac;
 		LocalDate fechaActual = LocalDate.now();
 		return Period.between(fecha, fechaActual).getYears();
@@ -159,5 +164,15 @@ public class Estudiante {
 				+ ", genero=" + genero + ", dni=" + dni + ", ciudadDeResidencia=" + ciudadDeResidencia + ", nroLibreta="
 				+ nroLibreta + "]";
 	}
+
+	public void setFechaNac(LocalDate fechaNac2) {
+		this.fechaNac = fechaNac2;
+	}
+
+	public void setDni(int dni2) {
+		this.dni = dni2;
+	}
+	
+	
 	
 }
