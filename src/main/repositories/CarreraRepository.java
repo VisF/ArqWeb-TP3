@@ -26,6 +26,9 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 	@Query("SELECT c FROM Carrera c WHERE LOWER(c.nombre) = LOWER(:nombre)")
     Optional<Carrera> findByNombre(String nombre);
 	
+	@Query("SELECT new main.dto.CarreraDTO(c.nombre) FROM Carrera c WHERE c.id=:id")
+    Optional<Carrera> findById(Integer id);
+	
 	@Query("SELECT new main.dto.CarreraReporteDTO(c.nombre, YEAR(ec.fechaInicio), " +
 	        "COUNT(ec), " +
 	        "(SELECT COUNT(ece) FROM EstudianteCarrera ece WHERE ece.carrera.id = c.id AND YEAR(ece.fechaFin) = YEAR(ec.fechaInicio))) " +

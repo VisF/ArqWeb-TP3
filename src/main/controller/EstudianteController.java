@@ -37,7 +37,7 @@ public class EstudianteController {
 	public Optional<Estudiante> getById(@PathVariable Integer id){
 		return service.findById(id);
 	}
-	
+	 
 	@PostMapping("/")
     public Estudiante save(@RequestBody Estudiante estudiante){
         return service.save(estudiante);

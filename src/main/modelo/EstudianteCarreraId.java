@@ -3,6 +3,8 @@ package main.modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.web.bind.annotation.PostMapping;
+
 public class EstudianteCarreraId implements Serializable{
 
 	private Integer estudiante;
