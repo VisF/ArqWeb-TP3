@@ -13,6 +13,7 @@ import main.repositories.EstudianteCarreraRepository;
 
 import main.modelo.Estudiante;
 import main.repositories.EstudianteRepository;
+import main.services.CarreraService;
 import main.services.EstudianteService;
 
 
@@ -23,7 +24,7 @@ class LoadDatabase {
 
 	    @Bean
 	    CommandLineRunner initDatabase(EstudianteRepository estudianteRepository, CarreraRepository carreraRepo, EstudianteCarreraRepository estCarreraRepo,
-	    		EstudianteService estudianteService) {
+	    		EstudianteService estudianteService, CarreraService carreraService) {
 	        return args -> {
 	        	
 	        	 /*var student1 = new Estudiante("Student1", "ApStudent1", LocalDate.now() , 'M' , 123458, "Tres Arroyos");
@@ -59,6 +60,14 @@ class LoadDatabase {
 		            }
 		            */
 		            try {
+		            	Carrera c1 = new Carrera("TUDAI");
+		            	Carrera c2 = new Carrera("Tecnicatura en Bioingenieria");
+		            	
+		            	carreraService.save(c1);
+		            	carreraService.save(c2);
+		            	
+		            	/*ESTUDIANTES*/
+		            	
 		            	Estudiante es = new Estudiante("Paula" , "Sabatini", LocalDate.now() , 'F', 2345, "Chacabuco");
 		        		Estudiante es2 = new Estudiante("Laura" , "Martinez", LocalDate.now() , 'F', 2345, "Zamora");
 		        		Estudiante es3 = new Estudiante("Anastacia" , "Lopez", LocalDate.now() , 'F', 2345, "Loberia");
@@ -73,16 +82,7 @@ class LoadDatabase {
 		        		estudianteService.save(es4);
 		        		estudianteService.save(es5);
 		        		estudianteService.save(es6);
-		        		
-		        		
-		        		/*CARRERAS*/
-		        		
-		        		Carrera c1 = new Carrera("TUDAI");
-		        		Carrera c2 = new Carrera("Tecnicatura en Bioingenieria");
-		        		
-		        		carreraRepo.save(c1);
-		        		carreraRepo.save(c2);
-		        		
+		        		     		
 		        		
 		        		/*ESTUDIANTE - CARRERA*/
 		        		EstudianteCarrera ec = new EstudianteCarrera(es, c1,  LocalDate.now());

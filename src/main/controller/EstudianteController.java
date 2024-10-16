@@ -51,7 +51,7 @@ public class EstudianteController {
 	
 	//2.e
 	@GetMapping("/genero/{genero}")
-	public Iterable<Estudiante> getByGenero(Character genero){
+	public Iterable<Estudiante> getByGenero(@PathVariable Character genero){
 		return service.findByGenero(genero);
 	}
 	

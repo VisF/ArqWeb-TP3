@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import main.repositories.CarreraRepository;
 import main.dto.CarreraDTO;
 import main.dto.CarreraInscriptosDTO;
+import main.dto.CarreraReporteDTO;
 import main.modelo.Carrera;
 
 
@@ -38,11 +39,6 @@ public class CarreraService {
 		return carreraRepository.findById(id);
 	}
 	
-	public Carrera save(Carrera carrera) {
-		carreraRepository.save(carrera);
-		return carrera;
-	}
-	
 	//ver!
 	public Carrera update(Carrera carrera, Integer id) {	
 		Carrera carreraAnt = findById(id).get();
@@ -53,6 +49,21 @@ public class CarreraService {
 
 	public void delete(Integer id) {
 		carreraRepository.deleteById(id);
+	}
+
+	public Carrera save(Carrera carrera) {
+		Optional<Carrera> carreraExistente = carreraRepository.findByNombre(carrera.getNombre());
+
+        if (carreraExistente.isPresent()) {
+            throw new IllegalArgumentException("Ya existe una carrera con el nombre: " + carrera.getNombre());
+        }
+
+        // Si no existe, la crea
+        return carreraRepository.save(carrera);
+	}
+
+	public Iterable<CarreraReporteDTO> reporteCarreras() {
+		return carreraRepository.reporteCarreras();
 	}
 	
 }
