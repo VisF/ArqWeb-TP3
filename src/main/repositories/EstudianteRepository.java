@@ -13,11 +13,13 @@ import main.modelo.Estudiante;
 public interface EstudianteRepository extends JpaRepository<Estudiante, Integer> {
 
 	//Filtra estudiante por numero de libreta
-	@Query("SELECT e FROM Estudiante e WHERE e.nroLibreta = :nro")
+	@Query("SELECT new main.dto.EstudianteDTO(e.nombre,e.apellido,e.fechaNac,e.genero,e.dni,e.ciudadDeResidencia,e.nroLibreta)"
+			+ " FROM Estudiante e WHERE e.nroLibreta = :nro")
 	Optional<Estudiante> findByLibreta(int nro);
 	
 	//Filtra estudiantes por genero
-	@Query("SELECT e FROM Estudiante e WHERE e.genero = :genero")
+	@Query("SELECT new main.dto.EstudianteDTO(e.nombre,e.apellido,e.fechaNac,e.genero,e.dni,e.ciudadDeResidencia,e.nroLibreta)"
+			+ " FROM Estudiante e WHERE e.genero = :genero")
 	Iterable<Estudiante> findByGenero(Character genero);
 
 	@Query("SELECT new main.dto.EstudianteDTO(e.nombre,e.apellido,e.fechaNac,e.genero,e.dni,e.ciudadDeResidencia,e.nroLibreta) "

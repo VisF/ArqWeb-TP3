@@ -3,6 +3,7 @@ package main.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import main.services.CarreraService;
 import main.dto.CarreraDTO;
 import main.dto.CarreraInscriptosDTO;
+import main.dto.CarreraReporteDTO;
 import main.modelo.Carrera;
 
 @RestController
@@ -32,8 +34,8 @@ public class CarreraController {
 		return service.todas();
 	}
 	
-	//2.h
-	@GetMapping("/reporte")
+	//2.f
+	@GetMapping("/ordenadasInscriptos")
 	public Iterable<CarreraInscriptosDTO> conInscriptosDescendiente(){
 		return service.conInscriptosDescendiente();
 	}
@@ -43,13 +45,19 @@ public class CarreraController {
 	}
 	
 	@PostMapping("/")
-    public Carrera save(@RequestBody Carrera carrera){
-        return service.save(carrera);
+    public ResponseEntity<Carrera> save(@RequestBody Carrera carrera) {
+        Carrera nuevaCarrera = service.save(carrera);
+        return ResponseEntity.ok(nuevaCarrera);
     }
 	
 	@PutMapping("/{id}")
 	public Carrera update(@RequestBody Carrera carrera, @PathVariable Integer id) {
 		return service.update(carrera, id);
+	}
+	
+	@GetMapping("/reporte")
+	public Iterable<CarreraReporteDTO> reporteCarreras(){
+		return service.reporteCarreras();
 	}
 }
 

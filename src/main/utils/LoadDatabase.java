@@ -13,6 +13,7 @@ import main.repositories.EstudianteCarreraRepository;
 
 import main.modelo.Estudiante;
 import main.repositories.EstudianteRepository;
+import main.services.CarreraService;
 import main.services.EstudianteService;
 
 
@@ -23,7 +24,7 @@ class LoadDatabase {
 
 	    @Bean
 	    CommandLineRunner initDatabase(EstudianteRepository estudianteRepository, CarreraRepository carreraRepo, EstudianteCarreraRepository estCarreraRepo,
-	    		EstudianteService estudianteService) {
+	    		EstudianteService estudianteService, CarreraService carreraService) {
 	        return args -> {
 	        	
 	        	 /*var student1 = new Estudiante("Student1", "ApStudent1", LocalDate.now() , 'M' , 123458, "Tres Arroyos");
@@ -80,8 +81,8 @@ class LoadDatabase {
 		        		Carrera c1 = new Carrera("TUDAI");
 		        		Carrera c2 = new Carrera("Tecnicatura en Bioingenieria");
 		        		
-		        		carreraRepo.save(c1);
-		        		carreraRepo.save(c2);
+		        		carreraService.save(c1);
+		        		carreraService.save(c2);
 		        		
 		        		
 		        		/*ESTUDIANTE - CARRERA*/
