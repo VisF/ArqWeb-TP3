@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import main.dto.CarreraDTO;
 import main.modelo.Carrera;
 import main.modelo.EstudianteCarrera;
 import main.repositories.CarreraRepository;
@@ -60,12 +61,14 @@ class LoadDatabase {
 		            }
 		            */
 		            try {
-		            	Carrera c1 = new Carrera("TUDAI");
-		            	Carrera c2 = new Carrera("Tecnicatura en Bioingenieria");
+		            	CarreraDTO cDTO1 = new CarreraDTO("TUDAI",1);
+		            	CarreraDTO cDTO2 = new CarreraDTO("Tecnicatura en Bioingenieria",2);
 		            	
-		            	carreraService.save(c1);
-		            	carreraService.save(c2);
+		            	carreraService.save(cDTO1);
+		            	carreraService.save(cDTO2);
 		            	
+		            	Carrera c1 = new Carrera(cDTO1);
+		            	Carrera c2 = new Carrera(cDTO2);
 		            	/*ESTUDIANTES*/
 		            	
 		            	Estudiante es = new Estudiante("Paula" , "Sabatini", LocalDate.now() , 'F', 2345, "Chacabuco");

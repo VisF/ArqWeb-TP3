@@ -34,15 +34,16 @@ public class CarreraService {
 	public Iterable<CarreraInscriptosDTO> conInscriptosDescendiente(){
 		return carreraRepository.conInscriptosDescendiente();
 	}
-
+	/*
 	public Optional<Carrera> findById(Integer id){
 		return carreraRepository.findById(id);
-	}
+	}*/
 	
 	//ver!
-	public Carrera update(Carrera carrera, Integer id) {	
-		Carrera carreraAnt = findById(id).get();
-		carreraAnt.setNombre(carrera.getNombre());
+	public Carrera update(CarreraDTO carreraDTOput, Integer id) {	
+		CarreraDTO carreraDTO = findByIdCustom(id).get();
+		Carrera carreraAnt = new Carrera(carreraDTO);
+		carreraAnt.setNombre(carreraDTOput.getNombre());
 		return carreraRepository.save(carreraAnt);
 	}
 	
@@ -51,21 +52,24 @@ public class CarreraService {
 		carreraRepository.deleteById(id);
 	}
 
-	public Carrera save(Carrera carrera) {
-		Optional<Carrera> carreraExistente = carreraRepository.findByNombre(carrera.getNombre());
+	public Carrera save(CarreraDTO carreraDTO) {
+		Optional<Carrera> carreraExistente = carreraRepository.findByNombre(carreraDTO.getNombre());
 
         if (carreraExistente.isPresent()) {
-            throw new IllegalArgumentException("Ya existe una carrera con el nombre: " + carrera.getNombre());
+            throw new IllegalArgumentException("Ya existe una carrera con el nombre: " + carreraDTO.getNombre());
         }
 
         // Si no existe, la crea
-        return carreraRepository.save(carrera);
+        return carreraRepository.save(new Carrera(carreraDTO));
 	}
 
 	public Iterable<CarreraReporteDTO> reporteCarreras() {
 		return carreraRepository.reporteCarreras();
 	}
 	
+	public Optional<CarreraDTO> findByIdCustom(Integer id){
+		return carreraRepository.findByIdCustom(id);
+	}
 }
 
 

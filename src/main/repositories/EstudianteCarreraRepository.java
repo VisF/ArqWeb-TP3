@@ -16,8 +16,8 @@ import main.modelo.EstudianteCarreraId;
 @Repository
 public interface EstudianteCarreraRepository extends JpaRepository<EstudianteCarrera, EstudianteCarreraId> {
 	
-	@Query("INSERT INTO EstudianteCarrera (estudianteId, carreraId, fechaInicio,fechaFin) "
-			+ "VALUES (:estudianteId, :carreraId, :fechaInicio, :fechaFin)")
+	@Query("INSERT INTO EstudianteCarrera (estudiante, carrera, fechaInicio,fechaFin) "
+			+ "VALUES (:estudiante, :carrera, :fechaInicio, :fechaFin)")
 	EstudianteCarrera saveEC(Estudiante estudiante, Carrera carrera, LocalDate fechaInicio, LocalDate fechaFin);
 
 

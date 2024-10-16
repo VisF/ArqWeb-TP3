@@ -14,7 +14,7 @@ import main.modelo.Carrera;
 @Repository
 public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 
-	@Query("SELECT new main.dto.CarreraDTO(c.nombre) FROM Carrera c")
+	@Query("SELECT new main.dto.CarreraDTO(c.nombre,c.id) FROM Carrera c")
 	Iterable<CarreraDTO> todas();
 	
 	@Query("SELECT new main.dto.CarreraInscriptosDTO(c.nombre, COUNT(ec.carrera))"
@@ -26,8 +26,8 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 	@Query("SELECT c FROM Carrera c WHERE LOWER(c.nombre) = LOWER(:nombre)")
     Optional<Carrera> findByNombre(String nombre);
 	
-	@Query("SELECT new main.dto.CarreraDTO(c.nombre) FROM Carrera c WHERE c.id=:id")
-    Optional<Carrera> findById(Integer id);
+	@Query("SELECT new main.dto.CarreraDTO(c.nombre,c.id) FROM Carrera c WHERE c.id=:id")
+    Optional<CarreraDTO> findByIdCustom(Integer id);
 	
 	@Query("SELECT new main.dto.CarreraReporteDTO(c.nombre, YEAR(ec.fechaInicio), " +
 	        "COUNT(ec), " +
@@ -36,4 +36,5 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 	        "GROUP BY c.nombre, YEAR(ec.fechaInicio) " +
 	        "ORDER BY c.nombre ASC, YEAR(ec.fechaInicio) ASC")
 	Iterable<CarreraReporteDTO> reporteCarreras();
+	
 }

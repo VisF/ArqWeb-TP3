@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import main.dto.CarreraDTO;
 
 @Entity
 public class Carrera {
@@ -30,6 +31,11 @@ public class Carrera {
 	
 	public Carrera(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public Carrera(CarreraDTO dto) {
+		this.nombre=dto.getNombre();
+		this.id=dto.getId();
 	}
 	
 	public Integer getId() {

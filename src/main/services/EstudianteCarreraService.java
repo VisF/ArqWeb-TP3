@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import main.dto.CarreraDTO;
 import main.dto.EstudianteCarreraPostDTO;
 import main.modelo.Carrera;
 import main.modelo.Estudiante;
@@ -45,14 +46,15 @@ public class EstudianteCarreraService {
 	public EstudianteCarrera saveEC(EstudianteCarreraPostDTO ecDTO) {
 		//return estudianteCarreraRepository.saveEC(ec.getEstudianteId(),ec.getCarreraId(),ec.getFechaInicio(),ec.getFechaFin());
 		Estudiante estudiante =  estudianteService.findById(ecDTO.getEstudianteId()).orElseThrow();
-		Carrera carrera =  carreraService.findById(ecDTO.getCarreraId()).orElseThrow();
+		
+		CarreraDTO carreraDTO =  carreraService.findByIdCustom(ecDTO.getCarreraId()).orElseThrow();		
+		Carrera carrera = new Carrera(carreraDTO);
 		
 		EstudianteCarrera ec = new EstudianteCarrera(estudiante,carrera,ecDTO.getFechaInicio(),ecDTO.getFechaFin());
+		System.out.println("asd");
+		System.out.println(ecDTO.getFechaInicio());
 		return estudianteCarreraRepository.save(ec);
 
-	}
-	
-	
-	
+	}	
 	
 }

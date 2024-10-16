@@ -1,8 +1,9 @@
 package main.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class EstudianteCarreraPostDTO {
+public class EstudianteCarreraPostDTO implements Serializable{
 	private Integer estudianteId;
 	private Integer carreraId;
 	private LocalDate fechaInicio;

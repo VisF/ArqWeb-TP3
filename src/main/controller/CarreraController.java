@@ -41,18 +41,18 @@ public class CarreraController {
 		return service.conInscriptosDescendiente();
 	}
 	@GetMapping("/{id}")
-	public Optional<Carrera> getById(@PathVariable Integer id){
-		return service.findById(id);
+	public Optional<CarreraDTO> getById(@PathVariable Integer id){
+		return service.findByIdCustom(id);
 	}
 	
 	@PostMapping("/")
-    public ResponseEntity<Carrera> save(@RequestBody Carrera carrera) {
+    public ResponseEntity<Carrera> save(@RequestBody CarreraDTO carrera) {
         Carrera nuevaCarrera = service.save(carrera);
         return ResponseEntity.ok(nuevaCarrera);
     }
 	
 	@PutMapping("/{id}")
-	public Carrera update(@RequestBody Carrera carrera, @PathVariable Integer id) {
+	public Carrera update(@RequestBody CarreraDTO carrera, @PathVariable Integer id) {
 		return service.update(carrera, id);
 	}
 	
