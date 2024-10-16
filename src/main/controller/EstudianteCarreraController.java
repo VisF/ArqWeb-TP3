@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import main.services.EstudianteCarreraService;
-
+import main.dto.EstudianteCarreraPostDTO;
 import main.modelo.Carrera;
 import main.modelo.Estudiante;
 import main.modelo.EstudianteCarrera;
@@ -41,8 +41,12 @@ public class EstudianteCarreraController {
 	}
 	*/
 	
-	@PostMapping("/")
     public EstudianteCarrera save(@RequestBody Estudiante estudiante, Carrera carrera){
         return service.save(estudiante, carrera);
+    }
+	
+	@PostMapping("/")
+    public EstudianteCarrera saveEC(@RequestBody EstudianteCarreraPostDTO ec){
+        return service.saveEC(ec);
     }
 }

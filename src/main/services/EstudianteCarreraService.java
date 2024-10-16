@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import main.dto.EstudianteCarreraPostDTO;
 import main.modelo.Carrera;
 import main.modelo.Estudiante;
 import main.modelo.EstudianteCarrera;
@@ -29,6 +30,10 @@ public class EstudianteCarreraService {
 		EstudianteCarrera nuevo = new EstudianteCarrera(estudiante, carrera, LocalDate.now());
 		estudianteCarreraRepository.save(nuevo);
 		return nuevo;
+	}
+
+	public EstudianteCarrera saveEC(EstudianteCarreraPostDTO ec) {
+		return estudianteCarreraRepository.saveEC(ec.getEstudianteId(),ec.getCarreraId(),ec.getFechaInicio(),ec.getFechaFin());
 	}
 	
 	

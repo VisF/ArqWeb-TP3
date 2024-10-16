@@ -36,4 +36,6 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Integer>
 	
 	@Query("SELECT MAX(e.nroLibreta) FROM Estudiante e")
 	Optional<Integer> findMaxNroLibreta();
+
 }
+

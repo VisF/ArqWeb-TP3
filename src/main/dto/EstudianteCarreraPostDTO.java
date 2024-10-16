@@ -13,6 +13,7 @@ public class EstudianteCarreraPostDTO {
 	public EstudianteCarreraPostDTO(Integer estudianteId, Integer carreraId, LocalDate fechaInicio,
 			LocalDate fechaFin) {
 		super();
+		
 		this.estudianteId = estudianteId;
 		this.carreraId = carreraId;
 		this.fechaInicio = fechaInicio;
@@ -43,6 +44,4 @@ public class EstudianteCarreraPostDTO {
 	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	
-	
 }
