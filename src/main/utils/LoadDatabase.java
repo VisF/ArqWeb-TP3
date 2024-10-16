@@ -97,7 +97,7 @@ class LoadDatabase {
 		        		estCarreraRepo.save(ec4);
 		        		estCarreraRepo.save(ec5);
 		            }catch(Exception e) {
-		            	
+		            	System.out.println("Los datos ya estan cargados");
 		            }
 	        };
 	    }
