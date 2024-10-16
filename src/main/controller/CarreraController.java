@@ -32,6 +32,7 @@ public class CarreraController {
 		return service.todas();
 	}
 	
+	//2.h
 	@GetMapping("/reporte")
 	public Iterable<CarreraInscriptosDTO> conInscriptosDescendiente(){
 		return service.conInscriptosDescendiente();

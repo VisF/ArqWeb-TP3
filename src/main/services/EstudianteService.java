@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.repositories.EstudianteRepository;
-
+import main.dto.EstudianteDTO;
 import main.modelo.Estudiante;
 
 @Service
@@ -46,6 +46,15 @@ public class EstudianteService {
 
 	public Iterable<Estudiante> findByGenero(Character genero){
 		return repository.findByGenero(genero);
+	}
+
+	public Iterable<EstudianteDTO> getOrdenadoCiudad() {
+		return repository.getOrdenadoCiudad();
+	}
+
+	public Iterable<EstudianteDTO> getEstudiantesDeCarreraPorCiudad(String ciudad, String carrera) {
+		// TODO Auto-generated method stub
+		return repository.getEstudiantesDeCarreraPorCiudad(ciudad,carrera);
 	}
 
 }

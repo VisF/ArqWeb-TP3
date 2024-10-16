@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import main.services.EstudianteService;
-
+import main.dto.EstudianteDTO;
 import main.modelo.Estudiante;
 
 @RestController
@@ -40,14 +40,27 @@ public class EstudianteController {
         return service.save(estudiante);
     }
     
+	//2.d
 	@GetMapping("/libreta/{nro}")
 	public Optional<Estudiante> getByLibreta(@PathVariable int nro){
 		return service.findByLibreta(nro);
 	}
 	
+	//2.e
 	@GetMapping("/genero/{genero}")
 	public Iterable<Estudiante> getByGenero(Character genero){
 		return service.findByGenero(genero);
+	}
+	
+	//2.c
+	@GetMapping("/ordenadoCiudad")
+	public Iterable<EstudianteDTO> getOrdenadoCiudad(){
+		return service.getOrdenadoCiudad();
+	}
+	//2.g
+	@GetMapping("/{carrera}/{ciudad}")
+	public Iterable<EstudianteDTO> getEstudiantesDeCarreraPorCiudad(@PathVariable String ciudad,@PathVariable String carrera){
+		return service.getEstudiantesDeCarreraPorCiudad(ciudad,carrera);
 	}
 	
 }

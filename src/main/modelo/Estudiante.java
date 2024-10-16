@@ -40,6 +40,17 @@ public class Estudiante {
 		super();
 	}
 	
+	public Estudiante(String nombre, String apellido, LocalDate fechaNac, char genero, int dni, String ciudadDeResidencia) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fechaNac = fechaNac;
+		this.genero = genero;
+		this.dni = dni;
+		this.ciudadDeResidencia = ciudadDeResidencia;
+		this.carreras = null;
+	}
+	
 	public Estudiante(String nombre, String apellido, LocalDate fechaNac, char genero, int dni, String ciudadDeResidencia,
 		 List<EstudianteCarrera> carreras) {
 		super();
@@ -52,29 +63,19 @@ public class Estudiante {
 		this.carreras = carreras;
 	}
 	
-	public Estudiante(String nombre, String apellido, LocalDate fechaNac, char genero, int dni, String ciudadDeResidencia,
-			 int libreta) {
-			super();
-			this.nombre = nombre;
-			this.apellido = apellido;
-			this.fechaNac = fechaNac;
-			this.genero = genero;
-			this.dni = dni;
-			this.ciudadDeResidencia = ciudadDeResidencia;
-			this.nroLibreta = libreta;
-		}
-	
-	public Estudiante(String nombre, String apellido, LocalDate fechaNac, char genero, int dni, String ciudadDeResidencia) {
-			super();
-			this.nombre = nombre;
-			this.apellido = apellido;
-			this.fechaNac = fechaNac;
-			this.genero = genero;
-			this.dni = dni;
-			this.ciudadDeResidencia = ciudadDeResidencia;
-			this.carreras = null;
-		}
 		
+	public Estudiante(String nombre, String apellido, LocalDate fechaNac, char genero, int dni, String ciudadDeResidencia,
+			int libreta) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fechaNac = fechaNac;
+		this.genero = genero;
+		this.dni = dni;
+		this.ciudadDeResidencia = ciudadDeResidencia;
+		this.nroLibreta = libreta;
+		this.carreras = null;
+	}
 	
 	public String getNombre() {
 		return nombre;
