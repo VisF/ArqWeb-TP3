@@ -32,7 +32,7 @@ public class CarreraController {
 		return service.todas();
 	}
 	
-	@GetMapping("/pobladas")
+	@GetMapping("/reporte")
 	public Iterable<CarreraInscriptosDTO> conInscriptosDescendiente(){
 		return service.conInscriptosDescendiente();
 	}
